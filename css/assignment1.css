@@ -1,0 +1,11 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.divider{
+        padding-bottom: 20px;
+    /* margin-bottom: 20px; */
+    border-style: dotted;
+    border-width: 0px 0px 4px 0px;
+    border-color: tomato;
+}
+

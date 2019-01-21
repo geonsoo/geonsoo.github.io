@@ -1,0 +1,56 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>Assignment1</title> 
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/assignment1.css" rel="stylesheet"/>
+
+    </head> 
+    <body> 
+
+        <div class="header">
+            <h1>Assignment 1 - Blink!</h1>
+            <h2>Geon Soo Park</h2>
+            
+            <!-- Section for Schematic -->
+            <section class="divider">
+            <h3>Schematic</h3>
+            <p>For each resisters, I chose the value of 1k ohm. Because the Volt from each Pin is 5V and the red LED is 1.8 V drop. <br> Therefore, 
+            By using Ohm's Law V = I * R: R = 3.2/0.02 which is 160 ohm. That is why I chose 1k resistor (if the ohms is higher than resistor then it will over burden the LED. If the resistor is too high then the flow of electricity is too low).
+            </p>
+            <img src=images/assignment1/scheme.png width=400>
+            </section>
+            
+            <!-- Section for Circuit -->
+            <section class="divider">
+            <h3>Circuit</h3>
+            <p>Three power lines are connected to three pin modes (#13, 12, and 9) and one ground line is connected on the Arduino. Three red LEDs are connected on the Breadboard with three resisters</p>
+            <img src=images/assignment1/circuit.png width=400>
+            </section>
+            
+            <!-- Section for Firmware -->
+            <section class="divider">
+            <h3>Firmware</h3>
+            <p>Three outputs from the Arduino board pin modes (#13, 12, and 9). Then, three red LEDs turn on and off in every 2 seconds simultaneously.</p>
+            <img src=images/assignment1/code.png width=400>
+            </section>
+            
+            <!-- Section for Operation -->
+            <section class="divider">
+            <h3>Operation</h3>
+            <p>Each red LEDs blink simultaneously every two seconds.</p>
+            <img src=images/assignment1/blink.gif width=400>
+            </section>
+            
+            
+            <p>
+            Thank you and have a nice day!
+            </p>
+        </div>
+        
+    </body>
+</html>
