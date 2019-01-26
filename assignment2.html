@@ -19,8 +19,9 @@
             <!-- Section for Schematic -->
             <section class="divider">
             <h3>Schematic</h3>
-            <p>I chose the value of 1k ohms for the red LED resistor. Because the volt from Pin 7 is 5V and the red LED has 1.8 V drop. <br> 
-            By using the Ohm's Law V = I * R: R = 3.2/0.02 which is 160 ohms, I found out that 1k would be a safe resistor for the red LED. I also chose 1k resistor for the blue LED. The voltage drop for blue LED is 3.3 V and by using the wOhm's Law which is 1.7/0.02 = 85 ohms; 1k resistor would be enough for the blue LED (if the ohms is higher than resistor then it will over burden the LED. If the resistor is too high then the flow of electricity is too low). For the push button, I used 10k resistor. The maximum current allowed to go into the ground pin is 200mA and I chose 5V for the power. After using the Ohm's Law, I need at leaste 25 ohmns for my resistor. 
+            <p>
+I chose the value of 1k ohms for the red LED resistor. Because the volt from Pin 7 is 5V and the red LED has 1.8 V drop. <br> 
+            By using the Ohm's Law V = I * R: R = 3.2/0.02 which is 160 ohms, I found out that 1k would be a safe resistor for the red LED. I also chose 1k resistor for the blue LED. The voltage drop for blue LED is 3.3 V and by using the wOhm's Law which is 1.7/0.02 = 85 ohms; 1k resistor would be enough for the blue LED (if the ohms is higher than resistor then it will over burden the LED. If the resistor is too high then the flow of electricity is too low). <br> For the push button, I used 10k resistor. The maximum current allowed to go into the ground pin is 200mA and I chose 5V for the power. Therefore, if I do not use the resistor, it is same like connecting power directly to ground. <br> After using the Ohm's Law, 5/0.02, I need at leaste 250 ohms.
             </p>
             <img src=images/assignment2/scheme.png width=400>
             </section>
@@ -28,8 +29,8 @@
             <!-- Section for Circuit -->
             <section class="divider">
             <h3>Circuit</h3>
-           <p>The switch button is connected to the 5V pin and connects to the ground pin through a resistor. It is also connected to pin 4 which <br>
-            functions as a trigger (input and output) for the switch. <br> The blue LED is connected to pin 10 (because it requires analog format) through a resistor and connected to the ground pin. Lastly, the red LED is connected to Pin 7 through a resistor and then it connected to the ground pin </p>
+           <p>The push button is connected to the 5V pin and connects to the ground pin through a resistor. It is also connected to pin 4 which <br>
+            functions as a trigger (input and output) for the switch. <br> The blue LED is connected to pin 10 (because it requires analog format) through a resistor and connected to the ground pin. Lastly, the red LED is connected to Pin 7 through a resistor and then it connected to the ground pin. </p>
             <img src=images/assignment2/circuit.png width=400>
             </section>
             
