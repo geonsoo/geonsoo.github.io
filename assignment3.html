@@ -4,7 +4,7 @@
         <meta charset="utf-8"> 
         <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
-        <title>Assignment2</title> 
+        <title>Assignment3</title> 
 
         <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
         <link href="css/assignment1.css" rel="stylesheet"/>
@@ -13,39 +13,42 @@
     <body> 
 
         <div class="header">
-            <h1>Assignment 2 - Lights that Fade!</h1>
+            <h1>A3: Input Output!</h1>
             <h2>Geon Soo Park</h2>
             
             <!-- Section for Schematic -->
             <section class="divider">
             <h3>Schematic</h3>
-            <p>I chose the value of 1k ohms for the red LED resistor. Because the volt from Pin 7 is 5V and the red LED has 1.8 V drop. <br> 
-            By using the Ohm's Law V = I * R: R = 3.2/0.02 which is 160 ohms, I found out that 1k would be a safe resistor for the red LED. I also chose 1k resistor for the blue LED. The voltage drop for blue LED is 3.3 V and by using the wOhm's Law which is 1.7/0.02 = 85 ohms; 1k resistor would be enough for the blue LED (if the ohms is higher than resistor then it will over burden the LED. If the resistor is too high then the flow of electricity is too low). For the push button, I used 10k resistor. The maximum current allowed to go into the ground pin is 200mA and I chose 5V for the power. After using the Ohm's Law, I need at leaste 25 ohmns for my resistor. 
+            <p>I chose the value of 1k ohms for the red LED resistor. Because the volt from Pin 5 is 5V and the red LED has 1.8 V drop. <br> 
+            By using the Ohm's Law V = I * R: R = 3.2/0.02 which is 160 ohms, I found out that 1k would be a safe resistor for the red LED. I also chose 1k resistor for the blue LED. The voltage drop for blue LED is 3.3 V and by using the Ohm's Law which is 1.7/0.02 = 85 ohms; 1k resistor would be enough for the blue LED (if the ohms is higher than resistor then it will over burden the LED. If the resistor is too high then the flow of electricity is too low). For the photoresistor, I used 10k resistor. The maximum current allowed to go into the ground pin is 200mA and I chose 5V for the power. After using the Ohm's Law, I need at least 25 ohmns for my resistor. 
             </p>
-            <img src=images/assignment2/scheme.png width=400>
+            <img src=images/assignment3/scheme.png width=600>
             </section>
             
             <!-- Section for Circuit -->
             <section class="divider">
             <h3>Circuit</h3>
-           <p>The switch button is connected to the 5V pin and connects to the ground pin through a resistor. It is also connected to pin 4 which <br>
-            functions as a trigger (input and output) for the switch. <br> The blue LED is connected to pin 10 (because it requires analog format) through a resistor and connected to the ground pin. Lastly, the red LED is connected to Pin 7 through a resistor and then it connected to the ground pin </p>
-            <img src=images/assignment2/circuit.png width=400>
+           <p>The photoresistor is connected to the 5V and connected to the ground pin through a resistor. It is also connected to pin A0 which <br>
+            functions as a trigger the input for the photoresistor. <br> The blue LED is connected to pin 9 (because it requires analog format) through a resistor and connected to the ground pin. Lastly, the red LED is connected to Pin 5 through a resistor and then it connected to the ground pin </p>
+            <img src=images/assignment3/circuit.png width=600>
             </section>
             
             <!-- Section for Firmware -->
             <section class="divider">
             <h3>Firmware</h3>
-            <p>Three integels are initiated (two for LEDs (#7 and #10) and one for the button (#4)). There are two outputs <br> from the Arduino board pin modes (#7 and 10) and one input for the button (#4). Once the user pushes the switch button then <br> it triggers the action for the code. The blue LED starts to fade in and waits for 10 milliseconds and to fade out for 10 milliseconds. <br>After that, the red LED starts to blinks in every 50 milliseconds. It blinks about 100 times in total.</p>
-            <img src=images/assignment2/code_1.png width=400>
-            <img src=images/assignment2/code_2.png width=400>
+            <p>Three integels are initiated (two for LEDs (#5 and #9) and one for the photoresistor (A0)). There are two outputs <br> from the Arduino board pin modes (#5 and 9) and one input for the button (A0). <br>
+            If the photoresistor is less or equal to 300, it turns off the red LED and turns the blue LED on. It also pirnts "Blue on / Red Off." <br> If the photoresistor is bigger than 300, it turns the red LED on and turns off the blue LED. It also pirnts "Blue off / Red on." </p>
+            <img src=images/assignment3/code.png width=600>
+    
             </section>
             
             <!-- Section for Operation -->
             <section class="divider">
             <h3>Operation</h3>
-                <p>When the user pushes a button on the breadboard, the blue LED first start to fade in for 50 milliseconds and to fade out for 50 milliseconds.<br> After that, the red LED starts to repeatedly turn on and off (in every 10 milliseconds) for 100 times in total</p>
-            <img src=images/assignment2/fade.gif width=400>
+                <p>When the photoresistor value is equal or below 300 (dark) then it turns the blue LED on and prints "Blue on / Red Off." <br> If the value is bigger than 300 (bright) then turns the red LED on and prints "Blue off / Red on" </p>
+            <img src=images/assignment3/in_out_1.gif width=600>
+            <img src=images/assignment3/in_out_2.gif height=400>
+            
             </section>
             
             
