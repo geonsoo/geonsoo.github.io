@@ -13,43 +13,61 @@
     <body> 
 
         <div class="header">
-            <h1>A3: Input Output!</h1>
+            <h1>A4: High(er) voltage and transistors</h1>
             <h2>Geon Soo Park</h2>
             
             <!-- Section for Schematic -->
             <section class="divider">
             <h3>Schematic</h3>
-            <p>I chose the value of 1k ohms for the red LED resistor. Because the volt from Pin 5 is 5V and the red LED has 1.8 V drop. <br> 
-            By using the Ohm's Law V = I * R: R = 3.2/0.02 which is 160 ohms, I found out that 1k would be a safe resistor for the red LED. I also chose 1k resistor for the blue LED. The voltage drop for blue LED is 3.3 V and by using the Ohm's Law which is 1.7/0.02 = 85 ohms; 1k resistor would be enough for the blue LED (if the ohms is higher than resistor then it will over burden the LED. If the resistor is too high then the flow of electricity is too low). For the photoresistor, I used 10k resistor. The maximum current allowed to go into the ground pin is 200mA and I chose 5V for the power. R = V/I = 5v/0.02A = 250a. We need a resistor bigger than 250a. Furthermore, we need to use a resistor divider to allow the high impedence Anlog input to measure the voltage. We need to use the formula: Vout=Vin*(R2/(R1+R2)) to find the value for Vout. Vin is the 5V, R2 is 10k ohm, and R1 is the photoresistor (10k ohm). 
-
-
-
+            <p><strong>For Schematic I only drew 12 LEDs instead of 30 LEDs that I used; because to make the schematic simple</strong> <br>
+            
+            For the photoresistor, I used 10k resistor. The maximum current allowed to go into the ground pin is 200mA and I chose 5V for the power. R = V/I = 5v/0.02A = 250a. We need a resistor bigger than 250a. Furthermore, we need to use a resistor divider to allow the high impedence Anlog input to measure the voltage. We need to use the formula: Vout=Vin*(R2/(R1+R2)) to find the value for Vout. Vin is the 5V, R2 is 10k ohm, and R1 is the photoresistor (10k ohm). <br>
+            
+            <br>
+            
+            For the LEDs, I used 30 LEDs. Since 300 LEDs equal to 18 watts, 30 LEDs euqal to 1.8 watts. I used 12V for the power.<br>
+            Therefore, by using the formula P = IV, we can find the current flow through the transistor. 1.8 = I(12), so I = 0.15A. Since the transistor can provide max of 0.6A of current, the circuit is safe. <br>
+                
+                <br>
+            
+            For the resistor for base (connected to pin 9), I chose 10k ohms, because even without considering the voltage drop from the LED strip; R = P (12v)/I(o.o2A) which is 600 ohms. To secure my Arduino I chose 10k ohms for the resistor. I also calculated the current flow for each LED strip. 
+            
+            
+            
 
             </p>
-            <img src=images/assignment3/scheme.png width=600>
+            <img src=images/assignment4/scheme1.jpeg width=500>
+             <img src=images/assignment4/scheme2.jpeg width=500>
             </section>
             
             <!-- Section for Circuit -->
             <section class="divider">
             <h3>Circuit</h3>
-           <p>The photoresistor is connected to the 5V and connected to the ground pin through a resistor. It is also connected to pin A0 which <br>
-            functions as a trigger the input for the photoresistor. <br> The blue LED is connected to pin 9 (because it requires analog format) through a resistor and connected to the ground pin. Lastly, the red LED is connected to Pin 5 through a resistor and then it connected to the ground pin </p>
-            <img src=images/assignment3/circuit.png width=600>
+           <p>The photoresistor is connected to the 5V and connected to the ground pin through a resistor. It is also connected to pin A0 which 
+            functions as a trigger the input for the photoresistor. <br> 
+            <br>
+            
+            The positive side of power supply (12v) is connected to the positive side of LED strip and the negative side of the power supply (12v) is connected to the ground.
+            
+            The base of transistor is connected to pin 9 through a resistor, collector part of transistor is connected to the negative side of LED strip, and the emitter part of transistor is connected to the ground. <br> </p>
+             <img src=images/assignment4/circuit1.jpeg width=500>
+            <img src=images/assignment4/circuit1.png width=500>
+           
             </section>
             
             <!-- Section for Firmware -->
             <section class="divider">
             <h3>Firmware</h3>
-            <p>Three integels are initiated (two for LEDs (#5 and #9) and one for the photoresistor (A0)). There are two outputs <br> from the Arduino board pin modes (#5 and 9) and one input for the button (A0). <br>
-            If the photoresistor is less or equal to 300, it turns off the red LED and turns the blue LED on. It also pirnts "Blue on / Red Off." <br> If the photoresistor is bigger than 300, it turns the red LED on and turns off the blue LED. It also pirnts "Blue off / Red on." </p>
-            <img src=images/assignment3/code.png width=600>
+            <p>Two integels are initiated one for LED strip (#9) and one for the photoresistor (A0)). <br>There is one output from the Arduino board pin modes (#9) and one input for the photoresistor (A0). <br>
+            If the photoresistor is less or equal to 300, it turns the LEDs on. <br> If the photoresistor is bigger than 300, it turns the LEDs off.</p>
+            <img src=images/assignment4/code.png width=600>
     
             </section>
             
             <!-- Section for Operation -->
             <section class="divider">
             <h3>Operation</h3>
-                <p>When the photoresistor value is equal or below 300 (dark) then it turns the blue LED on and prints "Blue on / Red Off." <br> If the value is bigger than 300 (bright) then turns the red LED on and prints "Blue off / Red on" </p>
+                <p>When the photoresistor value is equal or below 300 (dark) then it turns the LED strip.  <br> If the photoresistor value is over 300 (bright) then turns off the LED strip  </p>
             <img src=images/assignment4/led_strip.gif width=600>
         
             
@@ -58,6 +76,8 @@
             
             <p>
             Thank you and have a nice day!
+            
+            <br>
             </p>
         </div>
         
