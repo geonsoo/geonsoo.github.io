@@ -19,6 +19,7 @@
             <!-- Section for Schematic -->
             <section class="divider">
             <h3>Schematic</h3>
+<!--
             <p><strong>For Schematic I only drew 12 LEDs instead of 30 LEDs; to make the schematic simple</strong> <br><br>
             
             For the photoresistor, I used 10k resistor. The maximum current allowed to go into the ground pin is 200mA and I chose 5V for the power. R = V/I = 5v/0.02A = 250a. We need a resistor bigger than 250a. Furthermore, we need to use a resistor divider to allow the high impedence Anlog input to measure the voltage. We need to use the formula: Vout=Vin*(R2/(R1+R2)) to find the value for Vout. Vin is the 5V, R2 is 10k ohm, and R1 is the photoresistor (10k ohm). <br>
@@ -32,16 +33,16 @@
             
             For the resistor for base (connected to pin 9), I chose 10k ohms, because even without considering the voltage drop from the LED strip; R = P (12v)/I(o.o2A) which is 600 ohms. To secure my Arduino I chose 10k ohms for the resistor. I also calculated the current flow for each LED strip. 
             
-            
-            
 
             </p>
+-->
             <img src=images/assignment5/scheme1.png width=500>
             </section>
             
             <!-- Section for Circuit -->
             <section class="divider">
             <h3>Circuit</h3>
+<!--
            <p>The photoresistor is connected to the 5V and connected to the ground pin through a resistor. It is also connected to pin A0 which 
             functions as a trigger the input for the photoresistor. <br> 
             <br>
@@ -49,6 +50,7 @@
             The positive side of power supply (12v) is connected to the positive side of LED strip and the negative side of the power supply (12v) is connected to the ground.
             
             The base of transistor is connected to pin 9 through a resistor, collector part of transistor is connected to the negative side of LED strip, and the emitter part of transistor is connected to the ground. <br> </p>
+-->
              <img src=images/assignment5/circuit1.jpeg jpeg width=500>
             <img src=images/assignment5/circuit1.png jpeg width=500>
            
@@ -57,9 +59,12 @@
             <!-- Section for Firmware -->
             <section class="divider">
             <h3>Firmware</h3>
+<!--
             <p>Two integels are initiated one for LED strip (#9) and one for the photoresistor (A0)). <br>There is one output from the Arduino board pin modes (#9) and one input for the photoresistor (A0). <br>
             If the photoresistor is less or equal to 300, it turns the LEDs on. <br> If the photoresistor is bigger than 300, it turns the LEDs off.</p>
-            <img src=images/assignment5/code1.png width=500>
+         
+-->
+               <img src=images/assignment5/code1.png width=500>
             <img src=images/assignment5/code2.png width=450>
     
             </section>
@@ -67,7 +72,7 @@
             <!-- Section for Operation -->
             <section class="divider">
             <h3>Operation</h3>
-                <p>When the photoresistor value is equal or below 300 (dark) then it turns the LED strip.  <br> If the photoresistor value is over 300 (bright) then turns off the LED strip  </p>
+<!--                <p>When the photoresistor value is equal or below 300 (dark) then it turns the LED strip.  <br> If the photoresistor value is over 300 (bright) then turns off the LED strip  </p>-->
             <img src=images/assignment5/servo1.GIF width=400>
             <img src=images/assignment5/servo2.GIF width=400>
         
