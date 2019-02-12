@@ -22,7 +22,9 @@
             <p>
             According to the documenation for the joystick, the analog value for joystick is betwen 0 and 1024 (x direction and y direction). For the servo, the angle value is from 0 to 180. Therefore, for this assignment, I connected x value for the joystick to pin A0 of Arduino and y value for the joystick to pin A1. For the servo PWM, I connected it to pin 9. <br>
             <br>
-            For this project, I made the angle for the servo to change depends on the direction of the joystick gets pushed or pulled. For example, if the user pulls down the joystick to the x side (up or down) and the analog value becomes 0, it changes the servo angle to 30 degree. If the user pushes to the opposite side and when the value becomes bigger than 800, then it moves around 60 degree.
+            For this project, I set the angle for servo to change depends on the direction of the joystick gets pushed or pulled. For example, if the user pulls down the joystick to the x side (left or right) and the analog value becomes 0, it changes the servo angle to 30 degree. If the user pushes to the opposite side and when the value becomes bigger than 800, then it moves around 60 degree. <br><br>
+            
+            Same for the y side, if the user pulls down the joystick to the y side (up or down) and the analog value becomes 0, it changes the servo angle to 90 degree. if the user pushes to the opposite side and when the value becomes bigger than 800, it moves the servo to 170 degree. 
             
 
             </p>
