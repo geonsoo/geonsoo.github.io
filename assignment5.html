@@ -19,38 +19,28 @@
             <!-- Section for Schematic -->
             <section class="divider">
             <h3>Schematic</h3>
-<!--
-            <p><strong>For Schematic I only drew 12 LEDs instead of 30 LEDs; to make the schematic simple</strong> <br><br>
-            
-            For the photoresistor, I used 10k resistor. The maximum current allowed to go into the ground pin is 200mA and I chose 5V for the power. R = V/I = 5v/0.02A = 250a. We need a resistor bigger than 250a. Furthermore, we need to use a resistor divider to allow the high impedence Anlog input to measure the voltage. We need to use the formula: Vout=Vin*(R2/(R1+R2)) to find the value for Vout. Vin is the 5V, R2 is 10k ohm, and R1 is the photoresistor (10k ohm). <br>
-            
+            <p>
+            According to the documenation for the joystick, the analog value for joystick is betwen 0 and 1024 (x direction and y direction). For the servo, the angle value is from 0 to 180. Therefore, for this assignment, I connected x value for the joystick to pin A0 of Arduino and y value for the joystick to pin A1. For the servo PWM, I connected it to pin 9. <br>
             <br>
-            
-            For the LEDs, I used 30 LEDs. Since 300 LEDs equal to 18 watts, 30 LEDs euqal to 1.8 watts. I used 12V for the power.<br>
-            Therefore, by using the formula P = IV, we can find the current flow through the transistor. 1.8 = I(12), so I = 0.15A. Since the transistor can provide max of 0.6A of current, the circuit is safe. <br>
-                
-                <br>
-            
-            For the resistor for base (connected to pin 9), I chose 10k ohms, because even without considering the voltage drop from the LED strip; R = P (12v)/I(o.o2A) which is 600 ohms. To secure my Arduino I chose 10k ohms for the resistor. I also calculated the current flow for each LED strip. 
+            For this project, I made the angle for the servo to change depends on the direction of the joystick gets pushed or pulled. For example, if the user pulls down the joystick to the x side (up or down) and the analog value becomes 0, it changes the servo angle to 30 degree. If the user pushes to the opposite side and when the value becomes bigger than 800, then it moves around 60 degree.
             
 
             </p>
--->
             <img src=images/assignment5/scheme1.png width=500>
             </section>
             
             <!-- Section for Circuit -->
             <section class="divider">
             <h3>Circuit</h3>
-<!--
-           <p>The photoresistor is connected to the 5V and connected to the ground pin through a resistor. It is also connected to pin A0 which 
-            functions as a trigger the input for the photoresistor. <br> 
+           <p>
+           
+               The servo and the joystick are connected to the 5V and connected to the ground of arduino through the breadboard. For the joystick, the X value is connected to pin A0 and the Y value is connected to pin A1.<br> For the servo motor, PWM is connected to pin 9 of arduino.
             <br>
             
-            The positive side of power supply (12v) is connected to the positive side of LED strip and the negative side of the power supply (12v) is connected to the ground.
+            </p>
             
-            The base of transistor is connected to pin 9 through a resistor, collector part of transistor is connected to the negative side of LED strip, and the emitter part of transistor is connected to the ground. <br> </p>
--->
+            
+            
              <img src=images/assignment5/circuit1.jpeg jpeg width=500>
             <img src=images/assignment5/circuit1.png jpeg width=500>
            
@@ -59,11 +49,23 @@
             <!-- Section for Firmware -->
             <section class="divider">
             <h3>Firmware</h3>
-<!--
-            <p>Two integels are initiated one for LED strip (#9) and one for the photoresistor (A0)). <br>There is one output from the Arduino board pin modes (#9) and one input for the photoresistor (A0). <br>
-            If the photoresistor is less or equal to 300, it turns the LEDs on. <br> If the photoresistor is bigger than 300, it turns the LEDs off.</p>
+            <p>
+            For this assignment 5, I am using the servo library to control the servo motor. In the firmware, I initiated the buttonPin01 (Pin A0) and buttonPin02 (Pin A1) for the input for joystick's (x and y value). It will delay 100 ms.
+            <br>
+            Then, I also attached pin 9 for the servo. By using the analogRead, I assigned xval for the analog value of buttonPin01 and yval for the analog value of buttonPin02. It will delay 100 ms.
+            <br><br>
+            If xval (the joystick value for x-axis) equals to "0" it will move 30 degree of the servo motor. Then it will print "X Value Low", "servo value: ", and "30." It will delay 100 ms.
+             <br><br>
+            If xval (the joystick value for x-axis) equal and bigger than 800 it will move 60 degree of the servo motor. Then it will print "X Value High", "servo value: ", and "60." It will delay 100 ms.
+             <br><br>
+            If yval (the joystick value for x-axis) equals to "0" it will move 90 degree of the servo motor. Then it will print "Y Value Low", "servo value: ", and "90." 
+             <br><br>
+            If yval (the joystick value for x-axis) equal and bigger than 800 it will move 170 degree of the servo motor. Then it will print "Y Value High", "servo value: ", and "170." It will delay 100 ms.
+            
+            
+            
+            </p>
          
--->
                <img src=images/assignment5/code1.png width=500>
             <img src=images/assignment5/code2.png width=450>
     
@@ -72,7 +74,24 @@
             <!-- Section for Operation -->
             <section class="divider">
             <h3>Operation</h3>
-<!--                <p>When the photoresistor value is equal or below 300 (dark) then it turns the LED strip.  <br> If the photoresistor value is over 300 (bright) then turns off the LED strip  </p>-->
+            
+            <p>
+            <br>
+            Then, I also attached pin 9 for the servo. By using the analogRead, I assigned xval for the analog value of buttonPin01 and yval for the analog value of buttonPin02. It will delay 100 ms.
+            <br><br>
+            If xval (the joystick value for x-axis) equals to "0" it will move 30 degree of the servo motor. Then it will print "X Value Low", "servo value: ", and "30." It will delay 100 ms.
+             <br><br>
+            If xval (the joystick value for x-axis) equal and bigger than 800 it will move 60 degree of the servo motor. Then it will print "X Value High", "servo value: ", and "60." It will delay 100 ms.
+             <br><br>
+            If yval (the joystick value for x-axis) equals to "0" it will move 90 degree of the servo motor. Then it will print "Y Value Low", "servo value: ", and "90." 
+             <br><br>
+            If yval (the joystick value for x-axis) equal and bigger than 800 it will move 170 degree of the servo motor. Then it will print "Y Value High", "servo value: ", and "170." It will delay 100 ms.
+            
+            
+            
+            </p>
+                
+                
             <img src=images/assignment5/servo1.GIF width=400>
             <img src=images/assignment5/servo2.GIF width=400>
         
