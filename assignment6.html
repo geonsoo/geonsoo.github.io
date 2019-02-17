@@ -1,0 +1,112 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>Assignment3</title> 
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/assignment1.css" rel="stylesheet"/>
+
+    </head> 
+    <body> 
+
+        <div class="header">
+            <h1>Assignment 5 -  Motors!</h1>
+            <h2>Geon Soo Park</h2>
+            
+            <!-- Section for Schematic -->
+            <section class="divider">
+            <h3>Schematic</h3>
+            <p>
+            According to the documenation for the joystick, the analog value for joystick is betwen 0 and 1024 (x direction and y direction). For the servo, the angle value is from 0 to 180. Therefore, for this assignment, I connected x value for the joystick to pin A0 of Arduino and y value for the joystick to pin A1. For the servo PWM, I connected it to pin 9. <br>
+            <br>
+            For this project, I set the angle for servo to change depends on the direction of the joystick gets pushed or pulled. For example, if the user pulls down the joystick to the x side (left or right) and the analog value becomes 0, it changes the servo angle to 30 degree. If the user pushes to the opposite side and when the value becomes bigger than 800, then it moves around 60 degree. <br><br>
+            
+            Same for the y side, if the user pulls down the joystick to the y side (up or down) and the analog value becomes 0, it changes the servo angle to 90 degree. if the user pushes to the opposite side and when the value becomes bigger than 800, it moves the servo to 170 degree. 
+            
+
+            </p>
+            <img src=images/assignment5/scheme1.png width=500>
+            </section>
+            
+            <!-- Section for Circuit -->
+            <section class="divider">
+            <h3>Circuit</h3>
+           <p>
+           
+               The servo and the joystick are connected to the 5V and connected to the ground of arduino through the breadboard. For the joystick, the X value is connected to pin A0 and the Y value is connected to pin A1.<br> For the servo motor, PWM is connected to pin 9 of arduino.
+            <br>
+            
+            </p>
+            
+            
+            
+             <img src=images/assignment5/circuit1.jpeg jpeg width=500>
+            <img src=images/assignment5/circuit1.png jpeg width=500>
+           
+            </section>
+            
+            <!-- Section for Firmware -->
+            <section class="divider">
+            <h3>Firmware</h3>
+            <p>
+            For this assignment 5, I am using the servo library to control the servo motor. In the firmware, I initiated the buttonPin01 (Pin A0) and buttonPin02 (Pin A1) for the input for joystick's (x and y value). It will delay 100 ms.
+            <br>
+            Then, I also attached pin 9 for the servo. By using the analogRead, I assigned xval for the analog value of buttonPin01 and yval for the analog value of buttonPin02. It will delay 100 ms.
+            <br><br>
+            If xval (the joystick value for x-axis) equals to "0" it will move 30 degree of the servo motor. Then it will print "X Value Low", "servo value: ", and "30." It will delay 100 ms.
+             <br><br>
+            If xval (the joystick value for x-axis) equal and bigger than 800 it will move 60 degree of the servo motor. Then it will print "X Value High", "servo value: ", and "60." It will delay 100 ms.
+             <br><br>
+            If yval (the joystick value for x-axis) equals to "0" it will move 90 degree of the servo motor. Then it will print "Y Value Low", "servo value: ", and "90." 
+             <br><br>
+            If yval (the joystick value for x-axis) equal and bigger than 800 it will move 170 degree of the servo motor. Then it will print "Y Value High", "servo value: ", and "170." It will delay 100 ms.
+            
+            
+            
+            </p>
+         
+               <img src=images/assignment5/code1.png width=500>
+            <img src=images/assignment5/code2.png width=450>
+    
+            </section>
+            
+            <!-- Section for Operation -->
+            <section class="divider">
+            <h3>Operation</h3>
+            
+            <p>
+            <br>
+            Then, I also attached pin 9 for the servo. By using the analogRead, I assigned xval for the analog value of buttonPin01 and yval for the analog value of buttonPin02. It will delay 100 ms.
+            <br><br>
+            If xval (the joystick value for x-axis) equals to "0" it will move 30 degree of the servo motor. Then it will print "X Value Low", "servo value: ", and "30." It will delay 100 ms.
+             <br><br>
+            If xval (the joystick value for x-axis) equal and bigger than 800 it will move 60 degree of the servo motor. Then it will print "X Value High", "servo value: ", and "60." It will delay 100 ms.
+             <br><br>
+            If yval (the joystick value for x-axis) equals to "0" it will move 90 degree of the servo motor. Then it will print "Y Value Low", "servo value: ", and "90." 
+             <br><br>
+            If yval (the joystick value for x-axis) equal and bigger than 800 it will move 170 degree of the servo motor. Then it will print "Y Value High", "servo value: ", and "170." It will delay 100 ms.
+            
+            
+            
+            </p>
+                
+                
+            <img src=images/assignment5/servo1.GIF width=400>
+            <img src=images/assignment5/servo2.GIF width=400>
+        
+            
+            </section>
+            
+            
+            <p>
+            Thank you and have a nice day!
+            
+            <br>
+            </p>
+        </div>
+        
+    </body>
+</html>
