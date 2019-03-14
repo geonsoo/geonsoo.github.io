@@ -8,30 +8,146 @@
 
         <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
         <link href="css/assignment1.css" rel="stylesheet"/>
+        <link href="final.css" rel="stylesheet"/>
 
     </head> 
     <body> 
 
         <div class="header">
-            <h1>Final Project</h1>
-            <h2>Geon Soo Park</h2>
+            <h1>Final Project - Pikachu in the House!</h1>
+            <h1>Geon Soo Park</h1>
             
             <!-- Section for Schematic -->
             <section class="divider">
-            <h3>Intro: Game using a joystick controller</h3>
+            <h2>Project Concept</h2>
             
             <p>
-             For my final project, I want to make a game that is controlled by a joystick controller. If I have time, I will aslo connect with the VR headset (HTC Vive).
-            </p>
-            <img src=iot-vr-620x354.jpg width=400>
+            For the final project, my initial goal was to connect physical computing to the virtual environment. Therefore, in the project, the user can interact with objects in the 3D environment (Pikachu) or the virtual environment with physical computing components (ex: joystick and photoresistor). 
             
+            <br><br>
+
+            I give credit to my friend, Lee, for the Pikachu animation.
+
+    
+
+            </p>
+            <img src=images/assignment9/process1.jpeg width=500> 
+         <img src=images/assignment9/process.png width=500>  
+                   
             </section>
             
             <section class="divider">
+            <h2>Demo Video</h2>
+                <video width="700" height="auto" controls>
+                  <source src="images/assignment9/439_project_movie.mp4" type="video/mp4">
+                  
+                </video>
+            </section>
+            
+            <section>
+            <h2>Techinical Implementation</h2>
+            
+            <h3>Schematic</h3>
+            <p>
+            
+           <strong> For Schematic I only drew 9 LEDs instead of 30 LEDs; to make the schematic simple</strong><br><br>
+            
+         
+
+            For the blue LED, I used a 10k resistor. The voltage drop for blue LED is 3.3 V and by using the Ohm's Law which is 1.7/0.02 = 85 ohms; 10k resistor would be enough for the blue LED (if the ohms are higher than the resistor then it will overburden the LED. If the resistor is too high, then the flow of electricity is too low). For the photoresistor, I used a 10k resistor. The maximum current allowed to go into the ground pin is 200mA,  and I chose 5V for the power. R = V/I = 5v/0.02A = 250a. We need a resistor bigger than 250a. Furthermore, we need to use a resistor divider to allow the high impedance Analog input to measure the voltage. We need to use the formula: Vout=Vin*(R2/(R1+R2)) to find the value for Vout. Vin is the 5V, R2 is 10k ohm, and R1 is the photoresistor (10k ohm). Lastly, for the joystick controller, I did not use any resistors. 
+
+            
+       
+       
+            
+            </p>
+            <img src=images/assignment9/scheme.png width=800>
+            </section>
+            
+            <!-- Section for Circuit -->
+            <section class="divider">
+            <h3>Circuit</h3>
+           <p>
+           The photoresistor is connected to the 5V and connected to the ground pin through a resistor. It is also connected to pin A4 which functions as a trigger for the input for the photoresistor. <br>
+            The blue LED is connected to pin 8 through a resistor and connected to the ground pin. Lastly, for the joystick controller: the x-axis is connected to A0, the y-axis is connected to A1, the switch button is connected to pin 2, 5V power, and ground.
+
+           
+            </p>
+            
+            
+            <img src=images/assignment9/circuit.png jpeg width=800>
+            
+           
+            </section>
+            
+            <!-- Section for Firmware -->
+            <section class="divider">
+            <h3>Firmware</h3>
+            
+            <p>
+            For my project’s firmware, the most important key is to connect and to send the data from Arduino to Unity. I am sending the data as an array data structure: [0,0,0,0]. In the array, the first value is the x-value, the second one is the value, the third one is the switch button, and the last value in the array is the value from the photoresistor.
+
+    
+                
+            </p>
+            
+            <h4>Code 1 - Arduino</h4>
+            <p>
+
+            First, I initiated all the int values such as Pin number, and x, y, button values. Then, I also created an empty array (int values[] = {0,0,0,0};//{xval, yval, click_button, value_photo};). 
+              <br><br>
+
+            There are inputs from the joystick controller (x, y, and switch button) and the photoresistor. There is one output: a blue LED. 
+              <br><br>
+
+            In the code, I used the Serial.print and Serial.println to print the arrays (ex: [0,0,0,0]. 
+            Under that, it is about changing the value for the arrays based on the joystick and the photoresistor. For example: if the analog value for the x-value is equal to 0, then the first value in the array changes to 1. If the value equals the 501, then it changes to 0, and if the analog value is bigger than 1000, then 2. It is similar for the y-value. If the analog value for the y-value is equal to 0, then the first value in the array changes to 1. If the value equals the 523, then it changes to 0, and if the analog value is bigger than 1000, then 2. 
+              <br><br>
+
+            For the switch button, if the value is 0, then it adds 0 in the third value of the array and also turns on (digitalWrite) the blue LED. If the value is 1, then it adds 1 in the array and turns off (digitalWrite) the blue LED. Lastly, for the photoresistor, if the analog value from the photoresistor is bigger than 500, then it adds 1 in the 4th value in the array. If the value is less than 300, then it adds 0 in the array.
+
+            </p>
+           <img src=images/assignment9/code_arduino1.png width=500>
+           <img src=images/assignment9/code_arduino2.png width=500>
+            
+    
+            <h4>Code 2 - Unity - Movement</h4>
+            <p>
+            This is a cs code for the Unity,  and this code controls the Pikachu. First, put "using System.IO.Ports;" on top of the Unity code and connect to my Arduino port name. Tt will open the SerialPort of my Arduino. Then, by using the ReadLine() function, it will read the array list one by one. By splitting the code using a comma, I can split the array and retrieve an int one by one. Since this code controls the Pikachu model, I only have to use the three values (first: x-value, second: y-value, and switch) from the array. After this, Unity code becomes very similar to the Arduino code. If the x == 1,  then it moves the object forward. If the x value is 2, then it moves the object backward. If the y-value is equal to 1, then it moves to the left. If the y-value is equal to 2, then it moves to the right. When both the x and the y-value are 0, then the object does not move. Lastly, if the click button (the switch button) is 0, then it sends the boolean true. If it is true, then it activates the electricity. If it is 1, then it is false and deactivates the electricity. 
+            </p>
+            <img src=images/assignment9/code_move1.png width=500>
+            <img src=images/assignment9/code_move2.png width=500>
+            <img src=images/assignment9/code_move3.png width=500>
+            
+           
+            
+            <h4>Code 3 - Unity - House Light</h4>
+            <p>
+            This is a cs code for the Unity, and this code controls the light intensity of the Pikachu House.  Similar to the Pikachu movement code, it will first open the SerialPort of my Arduino. Then, it reads the array and splits the array by using a comma. Since I only have to get the value for the last value in the array, I parse the last value and put it in the HouseObject. If the HouseObject is 1, then it changes the light intensity to 0.8. If it is 0 then, it changes to 0.3.
+            
+            </p>
+         
+            <img src=images/assignment9/code_light.png width=500>
+        
+            
+    
+            </section>
+            
+ 
+     
+         
+               
+        
+        
+            
+            <section class="divider">
+            <h2>Implementation Process</h2>
+            
             <h3>Step 1</h3>
             
             <p>
-            Sending data from arduino (joystick) to Unity (the game development engine)
+           Sending data from the Arduino (joystick) to the Unity (the game development engine)
+
             </p>
             <img src=images/final_1.gif width=400>
             
@@ -41,7 +157,7 @@
             <h3>Step 2</h3>
             
               <p>
-            Controlling light color in Unity by using photoresistor
+            Controlling the light in the Unity by using a photoresistor
             </p>
             <img src=images/unity_light.gif width=400>
             
@@ -51,9 +167,23 @@
             <h3>Step 3</h3>
             
               <p>
-           Importing a 3D model house (from asset store) in Unity 
+            Importing a 3D model house (from asset store) in my Unity environment
+ 
+
             </p>
             <img src=images/house.jpeg width=400>
+            
+            </section>
+            
+            
+            <section class="divider">
+            <h3>Step 3</h3>
+            
+            <p>
+            Change the main object to the Pikachu 3D model
+            </p>
+            <img src=images/assignment9/pika_3d.JPG width=400>
+
             
             </section>
             
@@ -61,31 +191,37 @@
             <h3>Step 4</h3>
             
             <p>
-            Change wire to bluetooth module
+            Soldering the wires 
             </p>
-            <img src=iot-vr-620x354.jpg width=400>
-            
-            </section>
-            
-            <section class="divider">
-            <h3>Step 3</h3>
-            
-            <p>
-            Build a game environment using Unity
-            </p>
-            <img src=iot-vr-620x354.jpg width=400>
+            <img src=images/assignment9/soldering.jpeg width=400>
+
             
             </section>
             
             
-            
-            
-            
-           
-            
+             <section class="divider">
+            <h3>Step 5</h3>
             
             <p>
-            Thank you and have a nice day!
+            Building the physical house for Pikachu
+            </p>
+            <img src=images/assignment9/physical_house1.jpeg width=400>
+             <img src=images/assignment9/physical_house2.jpeg width=400>
+              <img src=images/assignment9/physical_house3.jpeg width=400>
+            
+            </section>
+            
+            <h2>Thank you</h2>
+            <p>
+            
+            
+            
+            Thank you for this quarter and have a spring break! <br><br>
+            <img src=images/assignment9/pikia.gif width=400>
+            <br>
+            <br>
+
+
             </p>
         </div>
         
